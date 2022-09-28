@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { GetServerSideProps } from "next";
 
 import { db } from "../lib/db";
+import { cleanupRows } from "../lib/utils";
 
 import DataGrid from "@supabase/react-data-grid";
 
@@ -14,13 +15,13 @@ const Arrow = () => (
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    stroke-width="1.5"
+    strokeWidth="1.5"
     stroke="currentColor"
     className="w-6 h-6"
   >
     <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
     />
   </svg>
@@ -38,7 +39,9 @@ const TablePage: NextPage<{ rows: any; columns: any }> = ({
         <Link href="/">
           <div className="flex mb-5 text-white gap-2 items-center hover:text-gray-200 cursor-pointer">
             <Arrow />
-            <div>{router.query.name}</div>
+            <div>
+              {router.query.name} ({rows.length})
+            </div>
           </div>
         </Link>
 
@@ -53,10 +56,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = db[context.query.name];
 
   if (query) {
-    const rows = await query.findMany();
-
     const columns: { column_name: string }[] =
       await db.$queryRaw`SELECT column_name FROM information_schema.columns WHERE table_name = ${context.query.name};`;
+
+    const rows = await query.findMany();
+
+    const serializedRows = cleanupRows(rows);
 
     return {
       props: {
@@ -64,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           key: col.column_name,
           name: col.column_name,
         })),
-        rows,
+        rows: serializedRows,
       },
     };
   }
