@@ -1,5 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 import type { GetServerSideProps } from "next";
 
@@ -7,13 +9,39 @@ import { db } from "../lib/db";
 
 import DataGrid from "@supabase/react-data-grid";
 
+const Arrow = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    className="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
+  </svg>
+);
+
 const TablePage: NextPage<{ rows: any; columns: any }> = ({
   rows,
   columns,
 }) => {
+  const router = useRouter();
+
   return (
     <div>
       <div className="container m-[4rem]">
+        <Link href="/">
+          <div className="flex mb-5 text-white gap-2 items-center hover:text-gray-200 cursor-pointer">
+            <Arrow />
+            <div>{router.query.name}</div>
+          </div>
+        </Link>
+
         <DataGrid rows={rows} columns={columns} />
       </div>
     </div>
@@ -21,20 +49,27 @@ const TablePage: NextPage<{ rows: any; columns: any }> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const customers = await db.customers.findMany();
+  // @ts-ignore
+  const query = db[context.query.name];
 
-  const columns: { column_name: string }[] =
-    await db.$queryRaw`SELECT column_name FROM information_schema.columns WHERE table_name = 'customers';`;
+  if (query) {
+    const rows = await query.findMany();
 
-  return {
-    props: {
-      columns: columns.map((col) => ({
-        key: col.column_name,
-        name: col.column_name,
-      })),
-      rows: customers,
-    },
-  };
+    const columns: { column_name: string }[] =
+      await db.$queryRaw`SELECT column_name FROM information_schema.columns WHERE table_name = ${context.query.name};`;
+
+    return {
+      props: {
+        columns: columns.map((col) => ({
+          key: col.column_name,
+          name: col.column_name,
+        })),
+        rows,
+      },
+    };
+  }
+
+  return { props: {} };
 };
 
 export default TablePage;

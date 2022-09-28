@@ -25,12 +25,13 @@ const Arrow = () => (
 
 const Home: NextPage<{ tables: { table_name: string }[] }> = ({ tables }) => {
   return (
-    <div className="max-w-xs mx-auto flex-col m-[4rem] border-sm">
+    <div className="max-w-xs mx-auto m-[4rem] border-sm">
       {tables.map(({ table_name }) => (
         <Link key={table_name} href={`/table/${table_name}`}>
-          <p className="text-[#ddd] text-center border border-[#444] p-1 container text-sm mb-2 bg-[#212121] hover:bg-[#1b1b1b] cursor-pointer">
+          <div className="justify-between flex text-[#ddd] text-center border border-[#444] py-1 px-4 container text-sm mb-2 bg-[#212121] hover:bg-[#1b1b1b] cursor-pointer">
             {table_name}
-          </p>
+            <Arrow />
+          </div>
         </Link>
       ))}
     </div>
