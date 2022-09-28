@@ -1,0 +1,4 @@
+{
+  "projectId": "cl8kaswaw1782234flywde4ev33",
+  "databaseUrl": "postgresql://postgres@localhost:5432/northwind"
+}
