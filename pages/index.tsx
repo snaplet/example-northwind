@@ -28,7 +28,7 @@ const Home: NextPage<{ tables: { table_name: string }[] }> = ({ tables }) => {
     <div className="max-w-xs mx-auto flex-col m-[4rem] border-sm">
       {tables.map(({ table_name }) => (
         <Link key={table_name} href={`/table/${table_name}`}>
-          <p className="text-[#ddd] text-center border border-[#444] p-1 container text-sm mb-2 bg-[#212121] hover:bg-gray-700 cursor-pointer">
+          <p className="text-[#ddd] text-center border border-[#444] p-1 container text-sm mb-2 bg-[#212121] hover:bg-[#1b1b1b] cursor-pointer">
             {table_name}
           </p>
         </Link>
