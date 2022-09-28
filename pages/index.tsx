@@ -1,17 +1,18 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
 
 import type { GetServerSideProps } from "next";
 
 import { db } from "./lib/db";
 
-import DataGrid from "@supabase/react-data-grid";
+import DataGrid, { Row, RowRendererProps } from "@supabase/react-data-grid";
 
 const Home: NextPage<{ rows: any; columns: any }> = ({ rows, columns }) => {
   return (
-    <div className={styles.container}>
-      <DataGrid rows={rows} columns={columns} />
+    <div>
+      <div className="container m-[4rem]">
+        <DataGrid rows={rows} columns={columns} />
+      </div>
     </div>
   );
 };
