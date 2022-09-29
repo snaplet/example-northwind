@@ -10,7 +10,7 @@ body {
 
 .bg-dots,
 html {
-  background: black url("./dots.png") repeat;
+  background: gray url("./dots.png") repeat;
   background-size: 4px;
 }
 
