@@ -2,3 +2,6 @@
 #  package = "/plugin/netlify-plugin/index.mjs"
 [[plugins]]
  package = "@snaplet/netlify-preview-database-plugin"
+
+ [plugins.inputs]
+ reset = true
