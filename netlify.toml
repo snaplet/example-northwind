@@ -1,2 +1,7 @@
 [[plugins]]
- package = "@snaplet/netlify-preview-database-plugin"
+  package = "@snaplet/netlify-preview-database-plugin"
+    [plugins.inputs]
+      databaseEnvVar = "DATABASE_URL"
+      databaseCreateCommand = "snaplet db create --git --latest"
+      databaseUrlCommand = "snaplet db url --git"
+      reset = false
