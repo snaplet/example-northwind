@@ -1,2 +1,2 @@
 [[plugins]]
- package = "/plugin/netlify-plugin"
+ package = "/plugin/netlify-plugin/index.mjs"
