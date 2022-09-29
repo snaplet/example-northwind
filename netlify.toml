@@ -1,2 +1,4 @@
+# [[plugins]]
+#  package = "/plugin/netlify-plugin/index.mjs"
 [[plugins]]
- package = "/plugin/netlify-plugin/index.mjs"
+ package = "@snaplet/netlify-preview-database-plugin"
