@@ -1,2 +1,0 @@
-[[plugins]]
-  package = "@snaplet/netlify-preview-database-plugin"

@@ -13,7 +13,6 @@ export const onPreBuild = async function ({
     reset = false,
   },
 }) {
-  console.log("Entering plugin...");
   if (process.env.CONTEXT === "deploy-preview") {
     const __dirname = path.resolve();
     const pluginPath =
@@ -23,18 +22,13 @@ export const onPreBuild = async function ({
 
     console.log(`Creating preview db from ${branch} branch...`);
 
-    const { stderr } = await run.command(
-      path.join(__dirname, `${pluginPath}/create.sh`),
-      {
-        env: {
-          DATABASE_CREATE_COMMAND: databaseCreateCommand,
-          DATABASE_URL_COMMAND: databaseUrlCommand,
-          DATABASE_RESET: reset,
-        },
-      }
-    );
-
-    console.log({ stderr });
+    await run.command(path.join(__dirname, `${pluginPath}/create.sh`), {
+      env: {
+        DATABASE_CREATE_COMMAND: databaseCreateCommand,
+        DATABASE_URL_COMMAND: databaseUrlCommand,
+        DATABASE_RESET: reset,
+      },
+    });
 
     console.log("Preview db created.");
 
