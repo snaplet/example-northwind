@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import type { GetServerSideProps } from "next";
 
-import { db } from "./lib/db";
+import { db } from "../lib/db";
 
 const Arrow = () => (
   <svg

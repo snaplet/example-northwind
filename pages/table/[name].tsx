@@ -5,8 +5,8 @@ import Link from "next/link";
 
 import type { GetServerSideProps } from "next";
 
-import { db } from "../lib/db";
-import { cleanupRows } from "../lib/utils";
+import { db } from "../../lib/db";
+import { cleanupRows } from "../../lib/utils";
 
 import DataGrid from "@supabase/react-data-grid";
 
