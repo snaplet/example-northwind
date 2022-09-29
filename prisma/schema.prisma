@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres@localhost:5432/northwind"
+  url      = env("DATABASE_URL")
 }
 
 model categories {
