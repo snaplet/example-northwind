@@ -40,8 +40,7 @@ model customers {
   region                 String?                  
   postal_code            String?                  
   country                String?                  
-  phone                  String?                  
-  fax                    String?                  
+  phone                  String?
   customer_customer_demo customer_customer_demo[]
   orders                 orders[]
 }
