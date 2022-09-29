@@ -16,21 +16,22 @@ model categories {
 }
 
 model customer_customer_demo {
-  customer_id           String                @db.Char
-  customer_type_id      String                @db.Char
+  customer_id           String                @db.Char(1)
+  customer_type_id      String                @db.Char(1)
   customer_demographics customer_demographics @relation(fields: [customer_type_id], references: [customer_type_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_customer_customer_demo_customer_demographics")
   customers             customers             @relation(fields: [customer_id], references: [customer_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_customer_customer_demo_customers")
+
   @@id([customer_id, customer_type_id], map: "pk_customer_customer_demo")
 }
 
 model customer_demographics {
-  customer_type_id       String                   @id(map: "pk_customer_demographics") @db.Char
+  customer_type_id       String                   @id(map: "pk_customer_demographics") @db.Char(1)
   customer_desc          String?
   customer_customer_demo customer_customer_demo[]
 }
 
 model customers {
-  customer_id            String                   @id(map: "pk_customers") @db.Char
+  customer_id            String                   @id(map: "pk_customers") @db.Char(1)
   company_name           String                   @db.VarChar(40)
   contact_name           String?                  @db.VarChar(30)
   contact_title          String?                  @db.VarChar(30)
@@ -50,6 +51,7 @@ model employee_territories {
   territory_id String      @db.VarChar(20)
   employees    employees   @relation(fields: [employee_id], references: [employee_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_employee_territories_employees")
   territories  territories @relation(fields: [territory_id], references: [territory_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_employee_territories_territories")
+
   @@id([employee_id, territory_id], map: "pk_employee_territories")
 }
 
@@ -86,12 +88,13 @@ model order_details {
   discount   Float    @db.Real
   orders     orders   @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_details_orders")
   products   products @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_details_products")
+
   @@id([order_id, product_id], map: "pk_order_details")
 }
 
 model orders {
   order_id         Int             @id(map: "pk_orders") @db.SmallInt
-  customer_id      String?         @db.Char
+  customer_id      String?         @db.Char(1)
   employee_id      Int?            @db.SmallInt
   order_date       DateTime?       @db.Date
   required_date    DateTime?       @db.Date
@@ -128,7 +131,7 @@ model products {
 
 model region {
   region_id          Int           @id(map: "pk_region") @db.SmallInt
-  region_description String        @db.Char
+  region_description String        @db.Char(1)
   territories        territories[]
 }
 
@@ -157,7 +160,7 @@ model suppliers {
 
 model territories {
   territory_id          String                 @id(map: "pk_territories") @db.VarChar(20)
-  territory_description String                 @db.Char
+  territory_description String                 @db.Char(1)
   region_id             Int                    @db.SmallInt
   region                region                 @relation(fields: [region_id], references: [region_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_territories_region")
   employee_territories  employee_territories[]
