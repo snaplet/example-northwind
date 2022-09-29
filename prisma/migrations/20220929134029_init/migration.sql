@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "categories" (
-    "category_id" SMALLINT NOT NULL,
-    "category_name" VARCHAR(15) NOT NULL,
+    "category_id" INTEGER NOT NULL,
+    "category_name" TEXT NOT NULL,
     "description" TEXT,
     "picture" BYTEA,
 
@@ -10,15 +10,15 @@ CREATE TABLE "categories" (
 
 -- CreateTable
 CREATE TABLE "customer_customer_demo" (
-    "customer_id" CHAR(1) NOT NULL,
-    "customer_type_id" CHAR(1) NOT NULL,
+    "customer_id" TEXT NOT NULL,
+    "customer_type_id" TEXT NOT NULL,
 
     CONSTRAINT "pk_customer_customer_demo" PRIMARY KEY ("customer_id","customer_type_id")
 );
 
 -- CreateTable
 CREATE TABLE "customer_demographics" (
-    "customer_type_id" CHAR(1) NOT NULL,
+    "customer_type_id" TEXT NOT NULL,
     "customer_desc" TEXT,
 
     CONSTRAINT "pk_customer_demographics" PRIMARY KEY ("customer_type_id")
@@ -26,95 +26,95 @@ CREATE TABLE "customer_demographics" (
 
 -- CreateTable
 CREATE TABLE "customers" (
-    "customer_id" CHAR(1) NOT NULL,
-    "company_name" VARCHAR(40) NOT NULL,
-    "contact_name" VARCHAR(30),
-    "contact_title" VARCHAR(30),
-    "address" VARCHAR(60),
-    "city" VARCHAR(15),
-    "region" VARCHAR(15),
-    "postal_code" VARCHAR(10),
-    "country" VARCHAR(15),
-    "phone" VARCHAR(24),
-    "fax" VARCHAR(24),
+    "customer_id" TEXT NOT NULL,
+    "company_name" TEXT NOT NULL,
+    "contact_name" TEXT,
+    "contact_title" TEXT,
+    "address" TEXT,
+    "city" TEXT,
+    "region" TEXT,
+    "postal_code" TEXT,
+    "country" TEXT,
+    "phone" TEXT,
+    "fax" TEXT,
 
     CONSTRAINT "pk_customers" PRIMARY KEY ("customer_id")
 );
 
 -- CreateTable
 CREATE TABLE "employee_territories" (
-    "employee_id" SMALLINT NOT NULL,
-    "territory_id" VARCHAR(20) NOT NULL,
+    "employee_id" INTEGER NOT NULL,
+    "territory_id" TEXT NOT NULL,
 
     CONSTRAINT "pk_employee_territories" PRIMARY KEY ("employee_id","territory_id")
 );
 
 -- CreateTable
 CREATE TABLE "employees" (
-    "employee_id" SMALLINT NOT NULL,
-    "last_name" VARCHAR(20) NOT NULL,
-    "first_name" VARCHAR(10) NOT NULL,
-    "title" VARCHAR(30),
-    "title_of_courtesy" VARCHAR(25),
-    "birth_date" DATE,
-    "hire_date" DATE,
-    "address" VARCHAR(60),
-    "city" VARCHAR(15),
-    "region" VARCHAR(15),
-    "postal_code" VARCHAR(10),
-    "country" VARCHAR(15),
-    "home_phone" VARCHAR(24),
-    "extension" VARCHAR(4),
+    "employee_id" INTEGER NOT NULL,
+    "last_name" TEXT NOT NULL,
+    "first_name" TEXT NOT NULL,
+    "title" TEXT,
+    "title_of_courtesy" TEXT,
+    "birth_date" TIMESTAMP(3),
+    "hire_date" TIMESTAMP(3),
+    "address" TEXT,
+    "city" TEXT,
+    "region" TEXT,
+    "postal_code" TEXT,
+    "country" TEXT,
+    "home_phone" TEXT,
+    "extension" TEXT,
     "photo" BYTEA,
     "notes" TEXT,
-    "reports_to" SMALLINT,
-    "photo_path" VARCHAR(255),
+    "reports_to" INTEGER,
+    "photo_path" TEXT,
 
     CONSTRAINT "pk_employees" PRIMARY KEY ("employee_id")
 );
 
 -- CreateTable
 CREATE TABLE "order_details" (
-    "order_id" SMALLINT NOT NULL,
-    "product_id" SMALLINT NOT NULL,
-    "unit_price" REAL NOT NULL,
-    "quantity" SMALLINT NOT NULL,
-    "discount" REAL NOT NULL,
+    "order_id" INTEGER NOT NULL,
+    "product_id" INTEGER NOT NULL,
+    "unit_price" DOUBLE PRECISION NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "discount" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "pk_order_details" PRIMARY KEY ("order_id","product_id")
 );
 
 -- CreateTable
 CREATE TABLE "orders" (
-    "order_id" SMALLINT NOT NULL,
-    "customer_id" CHAR(1),
-    "employee_id" SMALLINT,
-    "order_date" DATE,
-    "required_date" DATE,
-    "shipped_date" DATE,
-    "ship_via" SMALLINT,
-    "freight" REAL,
-    "ship_name" VARCHAR(40),
-    "ship_address" VARCHAR(60),
-    "ship_city" VARCHAR(15),
-    "ship_region" VARCHAR(15),
-    "ship_postal_code" VARCHAR(10),
-    "ship_country" VARCHAR(15),
+    "order_id" INTEGER NOT NULL,
+    "customer_id" TEXT,
+    "employee_id" INTEGER,
+    "order_date" TIMESTAMP(3),
+    "required_date" TIMESTAMP(3),
+    "shipped_date" TIMESTAMP(3),
+    "ship_via" INTEGER,
+    "freight" DOUBLE PRECISION,
+    "ship_name" TEXT,
+    "ship_address" TEXT,
+    "ship_city" TEXT,
+    "ship_region" TEXT,
+    "ship_postal_code" TEXT,
+    "ship_country" TEXT,
 
     CONSTRAINT "pk_orders" PRIMARY KEY ("order_id")
 );
 
 -- CreateTable
 CREATE TABLE "products" (
-    "product_id" SMALLINT NOT NULL,
-    "product_name" VARCHAR(40) NOT NULL,
-    "supplier_id" SMALLINT,
-    "category_id" SMALLINT,
-    "quantity_per_unit" VARCHAR(20),
-    "unit_price" REAL,
-    "units_in_stock" SMALLINT,
-    "units_on_order" SMALLINT,
-    "reorder_level" SMALLINT,
+    "product_id" INTEGER NOT NULL,
+    "product_name" TEXT NOT NULL,
+    "supplier_id" INTEGER,
+    "category_id" INTEGER,
+    "quantity_per_unit" TEXT,
+    "unit_price" DOUBLE PRECISION,
+    "units_in_stock" INTEGER,
+    "units_on_order" INTEGER,
+    "reorder_level" INTEGER,
     "discontinued" INTEGER NOT NULL,
 
     CONSTRAINT "pk_products" PRIMARY KEY ("product_id")
@@ -122,34 +122,34 @@ CREATE TABLE "products" (
 
 -- CreateTable
 CREATE TABLE "region" (
-    "region_id" SMALLINT NOT NULL,
-    "region_description" CHAR(1) NOT NULL,
+    "region_id" INTEGER NOT NULL,
+    "region_description" TEXT NOT NULL,
 
     CONSTRAINT "pk_region" PRIMARY KEY ("region_id")
 );
 
 -- CreateTable
 CREATE TABLE "shippers" (
-    "shipper_id" SMALLINT NOT NULL,
-    "company_name" VARCHAR(40) NOT NULL,
-    "phone" VARCHAR(24),
+    "shipper_id" INTEGER NOT NULL,
+    "company_name" TEXT NOT NULL,
+    "phone" TEXT,
 
     CONSTRAINT "pk_shippers" PRIMARY KEY ("shipper_id")
 );
 
 -- CreateTable
 CREATE TABLE "suppliers" (
-    "supplier_id" SMALLINT NOT NULL,
-    "company_name" VARCHAR(40) NOT NULL,
-    "contact_name" VARCHAR(30),
-    "contact_title" VARCHAR(30),
-    "address" VARCHAR(60),
-    "city" VARCHAR(15),
-    "region" VARCHAR(15),
-    "postal_code" VARCHAR(10),
-    "country" VARCHAR(15),
-    "phone" VARCHAR(24),
-    "fax" VARCHAR(24),
+    "supplier_id" INTEGER NOT NULL,
+    "company_name" TEXT NOT NULL,
+    "contact_name" TEXT,
+    "contact_title" TEXT,
+    "address" TEXT,
+    "city" TEXT,
+    "region" TEXT,
+    "postal_code" TEXT,
+    "country" TEXT,
+    "phone" TEXT,
+    "fax" TEXT,
     "homepage" TEXT,
 
     CONSTRAINT "pk_suppliers" PRIMARY KEY ("supplier_id")
@@ -157,19 +157,19 @@ CREATE TABLE "suppliers" (
 
 -- CreateTable
 CREATE TABLE "territories" (
-    "territory_id" VARCHAR(20) NOT NULL,
-    "territory_description" CHAR(1) NOT NULL,
-    "region_id" SMALLINT NOT NULL,
+    "territory_id" TEXT NOT NULL,
+    "territory_description" TEXT NOT NULL,
+    "region_id" INTEGER NOT NULL,
 
     CONSTRAINT "pk_territories" PRIMARY KEY ("territory_id")
 );
 
 -- CreateTable
 CREATE TABLE "us_states" (
-    "state_id" SMALLINT NOT NULL,
-    "state_name" VARCHAR(100),
-    "state_abbr" VARCHAR(2),
-    "state_region" VARCHAR(50),
+    "state_id" INTEGER NOT NULL,
+    "state_name" TEXT,
+    "state_abbr" TEXT,
+    "state_region" TEXT,
 
     CONSTRAINT "pk_usstates" PRIMARY KEY ("state_id")
 );
