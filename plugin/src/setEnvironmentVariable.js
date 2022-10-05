@@ -10,20 +10,39 @@ async function getAccountId(options) {
   return account.id;
 }
 
+async function isEnvironmentVariableDeployed(options) {
+  const { accountId, siteId, key, branch } = options;
+
+  let environmentVariableIsDeployed = false;
+
+  try {
+    const environmentVariable = await netlify(`accounts/${accountId}/env/${key}?site_id=${siteId}`);
+    environmentVariableIsDeployed = environmentVariable.values.some(v => v.context === "branch" && v.context_parameter === branch);
+  } catch (_) { }
+
+  return environmentVariableIsDeployed;
+}
+
 export async function setEnvironmentVariable(options) {
-  const { siteId, branch, name, value } = options;
+  const { siteId, branch, key, value } = options;
 
   const accountId = await getAccountId({ siteId });
 
-  await netlify(
-    `accounts/${accountId}/env/${name}?site_id=${siteId}`,
-    {
-      method: "PATCH",
-      body: JSON.stringify({
-        context: "branch",
-        context_parameter: branch,
-        value,
-      }),
-    }
-  );
+  const environmentVariableIsDeployed = await isEnvironmentVariableDeployed({ key, branch, accountId, siteId });
+
+  if (!environmentVariableIsDeployed) {
+    console.log(`Setting environment variable ${key} for branch ${branch}...`);
+    await netlify(
+      `accounts/${accountId}/env/${key}?site_id=${siteId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          context: "branch",
+          context_parameter: branch,
+          value,
+        }),
+      }
+    );
+    console.log(`Environment variable ${key} for branch ${branch} set.`);
+  }
 }

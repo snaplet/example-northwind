@@ -1,5 +1,4 @@
 import { createPreviewDatabase } from "./createPreviewDatabase.js"
-import { getPreviewDatabaseUrl } from "./getPreviewDatabaseUrl.js";
 import { installSnapletCLI } from "./installSnapletCLI.js";
 import { setEnvironmentVariable } from "./setEnvironmentVariable.js";
 
@@ -28,23 +27,17 @@ export async function onPreBuild({
 
     await installSnapletCLI({ run });
 
-    await createPreviewDatabase({ run }, {
+    const databaseUrl = await createPreviewDatabase({ run }, {
       databaseCreateCommand,
       databaseUrlCommand,
       reset,
     });
 
-    const databaseUrl = await getPreviewDatabaseUrl({ run }, {
-      databaseUrlCommand,
-    });
-
-    console.log(`Setting environment variable ${databaseEnvVar} for branch ${branch}...`);
     await setEnvironmentVariable({
       siteId: constants.SITE_ID,
       branch,
-      name: databaseEnvVar,
+      key: databaseEnvVar,
       value: databaseUrl,
     });
-    console.log(`Environment variable ${databaseEnvVar} for branch ${branch} set.`);
   }
 };
