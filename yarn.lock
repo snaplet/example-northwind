@@ -190,10 +190,10 @@
     fictional "^0.6.0"
     uuid "^8.3.2"
 
-"@snaplet/netlify-preview-database-plugin@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@snaplet/netlify-preview-database-plugin/-/netlify-preview-database-plugin-1.0.2.tgz#97c9a1d5b5922726aa403647d49cfedccb61b766"
-  integrity sha512-rUvBnOoYIqiWSrGtWEQy438s3AKRY5ikGgXcxmSHCS/hRtZHZDFUjHqFGos896jK5xItYPU/5spHJ9Ove2yxgA==
+"@snaplet/netlify-preview-database-plugin@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@snaplet/netlify-preview-database-plugin/-/netlify-preview-database-plugin-1.1.0.tgz#7bb06992b26a66fa2462abf2c7d8b91d5f66619c"
+  integrity sha512-Oyzj5JCUuCAVL3BTP8I0+/CPNn78ifSIakZpFE6H5P0FKSjm6Vvxb6F/WWL3GSH2+P/r/YQLrgjfCZPd/Sj+Bw==
   dependencies:
     node-fetch "^3.2.10"
 
