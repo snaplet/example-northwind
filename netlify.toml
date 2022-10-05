@@ -1,2 +1,2 @@
 [[plugins]]
- package = "@snaplet/netlify-preview-database-plugin"
+package = "@snaplet/netlify-preview-database-plugin"
