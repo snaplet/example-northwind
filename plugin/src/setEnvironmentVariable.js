@@ -5,6 +5,9 @@ async function getAccountId(options) {
 
   const [{ account_name, account_slug }, accounts] = await Promise.all([netlify(`sites/${siteId}`), netlify("accounts")]);
 
+  console.log({ account_name, account_slug })
+  console.log(accounts)
+
   const account = accounts.find(account => account.name === account_name && account.slug === account_slug);
 
   return account.id;
