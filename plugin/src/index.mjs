@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import fs from "node:fs/promises";
 
 // patch the PATH to include the snaplet CLI
 process.env.PATH = `/opt/buildhome/.local/bin/:${process.env.PATH}`;
@@ -20,7 +21,7 @@ async function netlify(path, options) {
 }
 
 async function installSnapletCLI(ctx) {
-  await ctx.run.command("curl -sL https://app.snaplet.dev/get-cli/ | bash &> /dev/null", { preferLocal: false });
+  await ctx.run.command("curl -sL https://app.snaplet.dev/get-cli/ | bash &> /dev/null", { shell: true });
 }
 
 async function getPreviewDatabaseUrl(ctx, options) {
