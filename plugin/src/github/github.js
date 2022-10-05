@@ -3,8 +3,9 @@ import fetch from "node-fetch";
 const [OWNER, REPOSITORY] = new URL(process.env.REPOSITORY_URL).pathname.slice(1).split("/");
 
 /**
+ * @template T
  * @param {string} path
- * @param {*} options
+ * @returns {Promise<T>}
  */
 export async function github(path, options) {
   const response = await fetch(`https://api.github.com/repos/${OWNER}/${REPOSITORY}/${path}`, {
@@ -20,5 +21,6 @@ export async function github(path, options) {
     throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
   }
 
+  // @ts-ignore
   return await response.json();
 }
