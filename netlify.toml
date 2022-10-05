@@ -1,2 +1,5 @@
 [[plugins]]
 package = "/plugin"
+
+  [plugins.inputs]
+    reset = true
