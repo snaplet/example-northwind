@@ -21,7 +21,7 @@ async function netlify(path, options) {
 }
 
 async function installSnapletCLI(ctx) {
-  await ctx.run.command("curl -sL https://app.snaplet.dev/get-cli/ | bash &> /dev/null", { shell: true });
+  await ctx.run.command("curl -sL https://app.snaplet.dev/get-cli/ | bash", { shell: true, stdio: "ignore" });
 }
 
 async function getPreviewDatabaseUrl(ctx, options) {
