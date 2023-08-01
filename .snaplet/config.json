@@ -1,5 +1,4 @@
 {
   "projectId": "cl8kaswaw1782234flywde4ev33",
-  "targetDatabaseUrl": "postgresql://postgres@localhost:5432/northwind",
-  "publicKey": "-----BEGIN RSA PUBLIC KEY-----\nMIIBigKCAYEAwveeTu6rjFOGMUu0dxcxXfUdCvGSQqfSiSGHeeoEdQFdwzxo8ey2\nrYpvabKJu64o3ua+WruM/qKUpmesu0hKJkupROxRLP9ibSwfosi8Q6CDFj7mUeEa\nukVaWUp9ra9CzASob3vSK1ck9Q2vCoZpFKsGf3pJ1HpV+4A70H4zi00I0I2xasF+\nB8789DAlNryXKqmEnvjldbxLC78aZnvYF2boY11pZPM0dhn+h9/1XgIdIqZtcZWL\nYG4lUhjjQ8C1IPlhCNi2Runp9dZT+3UTBvMGYH9w/VMs+G5p8iGJ18+s2BjiISH5\njasca/1dpz/SrOd/coCegTuRFhaN2qQA0VrzmXBMxvny50u78oXYi3yAzIq8NLjT\nUe1053r5Zr/ML/a89jEiZRzUyBkJ0nYyTT7vKAR+EjN3Tu0rqOT2s//zKtZET1hQ\nkZrUQHuIP1iHlsBAVhnDHS+a1f2eir2YXiTZUWo5F6MQEk8/QWHarqetlVg5Xdxa\nm7hCltz1RtrbAgMBAAE=\n-----END RSA PUBLIC KEY-----\n"
+  "targetDatabaseUrl": "postgresql://postgres@localhost:5432/northwind"
 }
