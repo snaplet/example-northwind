@@ -2458,7 +2458,7 @@ __metadata:
     prisma: 4.4.0
     react: 17.0.2
     react-dom: 17.0.2
-    snaplet: ^0.54.0
+    snaplet: 0.54.4
     tailwindcss: 3.1.8
     typescript: 4.8.4
   languageName: unknown
@@ -5360,9 +5360,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"snaplet@npm:^0.54.0":
-  version: 0.54.0
-  resolution: "snaplet@npm:0.54.0"
+"snaplet@npm:0.54.4":
+  version: 0.54.4
+  resolution: "snaplet@npm:0.54.4"
   dependencies:
     "@babel/core": 7.21.4
     "@babel/generator": 7.21.5
@@ -5430,7 +5430,7 @@ __metadata:
     zod: 3.21.4
   bin:
     snaplet: bin/snaplet.js
-  checksum: 28d58e598016c7d51489e161301040b449ecb500e9fcd1740233f723e9e62dfc5343406efa5be8b3a8163a62a96f8fe5bc2d5d64a3432063756bd23d02da153d
+  checksum: 676c7ebd2fe64f215ba35d34ee1004cca11d45922ee7888b189ba833b78b64e0cc7585abc8ef51771050eefa22c7acae2ecc861f7c0d6c03dca004784d7c3c59
   languageName: node
   linkType: hard
 
