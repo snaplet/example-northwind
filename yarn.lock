@@ -451,7 +451,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^8.0.2":
+"@faker-js/faker@npm:8.0.2, @faker-js/faker@npm:^8.0.2":
   version: 8.0.2
   resolution: "@faker-js/faker@npm:8.0.2"
   checksum: cf73daf9a50397eb0b3f04a7ef3fbb6f54acc026b167707136a7e58a517fd805a46c9e8c5f017f3022f104a4ff984765daaeee2cb98b3c34646db05c2acad441
@@ -821,6 +821,17 @@ __metadata:
     fictional: ^0.8.1
     uuid: ^8.3.2
   checksum: 84cb193e832e677fd389df3fc316c5f8bc544c308fdd6357c7e4067c24358b9e8981f7feb6f7d631a72be813a9cdf363e95c9e75a6ca15078e8149fdf830b10c
+  languageName: node
+  linkType: hard
+
+"@snaplet/copycat@npm:0.16.0":
+  version: 0.16.0
+  resolution: "@snaplet/copycat@npm:0.16.0"
+  dependencies:
+    "@faker-js/faker": ^8.0.2
+    fictional: ^0.8.1
+    uuid: ^8.3.2
+  checksum: 5dee3cf4221b856d974dacae47d0d55d71df2b692975f2e7bedc5480531df8b800c14a7fcc4de5c8b58910da60692ee138dd708ba86e5afb9b46603d4868dc02
   languageName: node
   linkType: hard
 
@@ -2458,7 +2469,7 @@ __metadata:
     prisma: 4.4.0
     react: 17.0.2
     react-dom: 17.0.2
-    snaplet: 0.54.4
+    snaplet: 0.55.0
     tailwindcss: 3.1.8
     typescript: 4.8.4
   languageName: unknown
@@ -4507,6 +4518,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pg-format@npm:1.0.4":
+  version: 1.0.4
+  resolution: "pg-format@npm:1.0.4"
+  checksum: 159b43ad57d2f963f1072def86080dd2a6dd42c1a86046e388d47b491e00afe795139520eb01c8dffc43ac0243c77b3c4c5882d0ec5f488bb3281f17458b1b3d
+  languageName: node
+  linkType: hard
+
 "pg-int8@npm:1.0.1":
   version: 1.0.1
   resolution: "pg-int8@npm:1.0.1"
@@ -5360,9 +5378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"snaplet@npm:0.54.4":
-  version: 0.54.4
-  resolution: "snaplet@npm:0.54.4"
+"snaplet@npm:0.55.0":
+  version: 0.55.0
+  resolution: "snaplet@npm:0.55.0"
   dependencies:
     "@babel/core": 7.21.4
     "@babel/generator": 7.21.5
@@ -5372,9 +5390,10 @@ __metadata:
     "@babel/template": 7.20.7
     "@babel/traverse": 7.21.5
     "@babel/types": 7.21.5
+    "@faker-js/faker": 8.0.2
     "@sentry/integrations": 7.48.0
     "@sentry/node": 7.48.0
-    "@snaplet/copycat": 0.15.1
+    "@snaplet/copycat": 0.16.0
     "@trpc/client": 10.29.1
     "@trpc/server": 10.29.1
     ansi-colors: 4.1.3
@@ -5408,6 +5427,7 @@ __metadata:
     p-memoize-cjs: 7.1.0
     pg: 8.10.0
     pg-copy-streams: 6.0.5
+    pg-format: 1.0.4
     pg-protocol: 1.6.0
     pg-query-stream: 4.5.0
     postgres-array: 3.0.2
@@ -5430,7 +5450,7 @@ __metadata:
     zod: 3.21.4
   bin:
     snaplet: bin/snaplet.js
-  checksum: 676c7ebd2fe64f215ba35d34ee1004cca11d45922ee7888b189ba833b78b64e0cc7585abc8ef51771050eefa22c7acae2ecc861f7c0d6c03dca004784d7c3c59
+  checksum: 822923d668e8da5751120d5d71c8266e068d7e031e6195a8639a28a72fd538c6089dba7cf22a6ad15e3aced1dafb591562152db6ab6c720cf49e6018a8e21aa8
   languageName: node
   linkType: hard
 
